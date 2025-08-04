@@ -6,7 +6,7 @@ A responsive, interactive Todo List web app built with **vanilla JavaScript**, *
 
 ---
 
-## 🔗 Live Demo
+🔗 Live Demo: https://todoapp757.netlify.app/
 
 > Coming soon (optional Netlify or GitHub Pages link)
 
