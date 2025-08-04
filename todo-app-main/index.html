@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <script defer src="script.js"></script>
+    <title>Frontend Mentor | Todo app</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body {
+        font-family: "Belleza", sans-serif;
+        background: hsl(148, 38%, 91%);
+        display: flex;
+        justify-content: center;
+        padding: 5rem 2rem;
+      }
+
+      .container {
+        max-width: 60rem;
+        width: 100%;
+      }
+
+      .hero {
+        position: relative;
+        text-align: center;
+      }
+
+      .img-class {
+        width: 100%;
+        height: 15rem;
+        display: block;
+        border-radius: 8px 8px 0 0;
+      }
+
+      h1 {
+        position: absolute;
+        top: 20%;
+        left: 25%;
+        color: #fff;
+        font-size: 2.4rem;
+        letter-spacing: 1rem;
+      }
+
+      .btn-icon {
+        position: absolute;
+        top: 20%;
+        right: 25%;
+        width: 1.8rem;
+        height: 1.8rem;
+      }
+
+      .todo-form {
+        position: absolute;
+        bottom: 4rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 55%;
+      }
+
+      .input-wrappers {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background-color: #fff;
+        padding: 1.2rem 1.5rem;
+        border-radius: 5px;
+        margin-bottom: 0.8rem;
+      }
+
+      input {
+        border: none;
+        width: 100%;
+        font-size: 1.4rem;
+        font-family: inherit;
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      .circle {
+        height: 2rem;
+        width: 2rem;
+        border: 1px solid hsl(236, 9%, 61%);
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      .todo-list-wrapper {
+        /* background-color: #fff;
+        padding: 2rem;
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        margin-top: -1rem; */
+
+        background-color: white;
+        padding: 1rem;
+        border-radius: 0.8rem;
+        max-width: 35rem;
+        margin-inline: auto;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.05);
+      }
+      .controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.2rem;
+        color: hsl(236, 9%, 61%);
+        /* padding-top: 0.1rem; */
+        border-top: 1px solid #ddd;
+        /* transform: translateY(190%); */
+        margin-bottom: -2.6rem;
+      }
+
+      .list-items {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .input-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        max-width: 40rem;
+        margin: 0 auto auto;
+        padding: 1rem 1.5rem;
+        background-color: #fff;
+        border-bottom: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.1);
+        transform: translateY(-90%);
+      }
+
+      .todo-checkbox {
+        width: 2rem;
+        height: 2rem;
+        border: 1px solid hsl(236, 9%, 61%);
+        border-radius: 50%;
+        appearance: none;
+        cursor: pointer;
+        background-color: transparent;
+        position: relative;
+      }
+
+      .todo-checkbox:checked {
+        background: linear-gradient(
+          to right,
+          hsl(192, 100%, 67%),
+          hsl(280, 87%, 65%)
+        );
+      }
+
+      .todo-checkbox:checked::after {
+        content: url("images/icon-check.svg");
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .todo-text {
+        flex-grow: 1;
+        font-size: 1.3rem;
+        color: hsl(235, 19%, 35%);
+      }
+
+      .todo-checkbox:checked + .todo-text {
+        text-decoration: line-through;
+        color: hsl(236, 9%, 61%);
+      }
+
+      .delete-btn {
+        width: 1.5rem;
+        height: 1.5rem;
+        cursor: pointer;
+        border: none;
+        background: inherit;
+      }
+      .emergency {
+        background-color: #fff;
+        width: 100%;
+        margin-top: -1rem;
+        padding-bottom: 8rem;
+      }
+      /*.flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        padding: 1rem;
+        font-size: 0.875rem;
+        background-color: var(--todo-bg); /* Optional: matches your list bg 
+        color: var(--text-color);
+        /* border-radius: 5px;
+        flex-wrap: wrap;
+      }
+      .inner-wrapper button {
+        min-width: 5rem;
+        text-align: center;
+      }
+
+      .flex p {
+        margin: 0;
+      }
+
+      .inner-wrapper {
+        display: flex;
+        gap: 0.6rem;
+      } */
+
+      /* .inner-wrapper button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: inherit;
+        padding: 0.3rem 0.6rem;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+      }
+
+      .inner-wrapper button:hover,
+      .clear-btn:hover {
+        color: #e0e0e0;
+      } */
+
+      .clear-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: inherit;
+        font-size: 0.9rem;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+      .filter-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.2rem;
+        margin-right: 2rem;
+      }
+
+      .filter-buttons button {
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+        color: hsl(236, 9%, 61%);
+        cursor: pointer;
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.4rem;
+        transition: background-color 0.3s;
+      }
+
+      .filter-buttons button:hover {
+        color: #ddd;
+      }
+
+      .filter-buttons .selected {
+        font-weight: 700;
+        color: hsl(220, 98%, 61%);
+      }
+      .hover-effect:hover {
+        color: #ddd;
+      }
+    </style>
+    <link href="queries.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="hero">
+        <img src="images/bg-desktop-light.jpg" alt="light" class="img-class" />
+
+        <h1>TODO</h1>
+        <div class="mode">
+          <button class="btn-mode-moon">
+            <img src="images/icon-moon.svg" alt="moon" class="btn-icon" />
+          </button>
+          <button class="btn-mode-sun hidden">
+            <img src="images/icon-sun.svg" alt="moon" class="btn-icon" />
+          </button>
+        </div>
+
+        <form class="todo-form">
+          <div class="input-wrappers">
+            <span class="circle"></span>
+            <input
+              type="text"
+              name="list"
+              placeholder="Create a new todo..."
+              id="todo-input"
+              autocomplete="off"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="emergency">
+        <div class="todo-list-wrapper">
+          <!-- Example list item -->
+
+          <ul class="list-items">
+            <!-- <li class="todo">
+            <div class="input-wrapper">
+              <input type="checkbox" class="todo-checkbox" />
+              <p class="todo-text">Learn JavaScript</p>
+              <img
+                src="images/icon-cross.svg"
+                alt="Delete"
+                class="delete-btn"
+              />
+            </div>
+          </li>
+          <li class="todo">
+            <div class="input-wrapper">
+              <input type="checkbox" class="todo-checkbox" />
+              <p class="todo-text">write myself</p>
+              <img
+                src="images/icon-cross.svg"
+                alt="Delete"
+                class="delete-btn"
+              />
+            </div>
+          </li>
+          <li class="todo">
+            <div class="input-wrapper">
+              <input type="checkbox" class="todo-checkbox" />
+              <p class="todo-text">Eat in the night</p>
+              <img
+                src="images/icon-cross.svg"
+                alt="Delete"
+                class="delete-btn"
+              />
+            </div>
+          </li> -->
+          </ul>
+          <div class="controls hidden">
+            <p class="items-left"><span>0</span> left</p>
+            <button class="clear-btn">Clear Completed</button>
+          </div>
+          <div class="filter-buttons hidden">
+            <button class="all-btn selected">All</button>
+            <button class="active-btn">Active</button>
+            <button class="complete-btn">Completed</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
